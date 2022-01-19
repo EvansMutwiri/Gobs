@@ -21,7 +21,7 @@ class JobCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: Container(
-          width: 250,
+          width: 200,
           padding: const EdgeInsets.all(12),
           color: Colors.grey[200],
           child: Column(

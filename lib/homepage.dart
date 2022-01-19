@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jobs/utils/job_card.dart';
+import 'package:jobs/utils/recently_added_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +15,13 @@ class _HomePageState extends State<HomePage> {
     ['Google', 'Tech Lead', 'lib/icons/google.png', 80],
     ['Apple', 'Product Designer', 'lib/icons/apple.png', 66],
     ['Adidas', 'Software Eng.', 'lib/icons/adidas.png', 50],
+  ];
+
+  final List recentyAdded = [
+    ['Nike', 'UI/UX Designer', 'lib/icons/nike.png', 65],
+    ['Apple', 'Tech Lead', 'lib/icons/apple.png', 80],
+    ['Apple', 'Product Designer', 'lib/icons/apple.png', 66],
+    ['Google', 'Software Eng.', 'lib/icons/google.png', 50],
   ];
   @override
   Widget build(BuildContext context) {
@@ -113,21 +121,52 @@ class _HomePageState extends State<HomePage> {
           const SizedBox(height: 25),
 
           //recently add -job tiles
-          Container(
-            height: 140,
-            // color: Colors.red[200],
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: SizedBox(
+              height: 140,
+              // color: Colors.red[200],
+              child: ListView.builder(
+                  itemCount: jobsForYou.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return JobCard(
+                      // ['Uber', 'UI/UX Designer', 'lib/icons/uber.png', 45]
+                      companyName: jobsForYou[index][0],
+                      jobTitle: jobsForYou[index][1],
+                      salary: jobsForYou[index][3],
+                      logoImage: jobsForYou[index][2],
+                    );
+                  }),
+            ),
+          ),
+
+          const SizedBox(height: 25),
+
+          //recently added -job tiles
+          const Padding(
+            padding: EdgeInsets.only(left: 24),
+            child: Text(
+              'Recently added',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+            ),
+          ),
+          // const SizedBox(height: 25),
+
+          Expanded(
+              child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: ListView.builder(
-                itemCount: jobsForYou.length,
-                scrollDirection: Axis.horizontal,
+                itemCount: recentyAdded.length,
                 itemBuilder: (context, index) {
-                  return JobCard(
-                    // ['Uber', 'UI/UX Designer', 'lib/icons/uber.png', 45]
-                    companyName: jobsForYou[index][0],
-                    jobTitle: jobsForYou[index][1],
-                    salary: jobsForYou[index][3],
-                    logoImage: jobsForYou[index][2],
+                  return RecentlyAddedCard(
+                    companyName: recentyAdded[index][0],
+                    jobTitle: recentyAdded[index][1],
+                    logoImage: recentyAdded[index][2],
+                    salary: recentyAdded[index][3],
                   );
                 }),
+          )
           )
         ],
       ),
