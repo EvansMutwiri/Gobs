@@ -29,6 +29,8 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[300],
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        verticalDirection: VerticalDirection.down,
         children: [
           const SizedBox(height: 75),
           //appbar
@@ -56,7 +58,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
             ),
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 24),
 
           //search bar
           Padding(
@@ -107,20 +109,20 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 30),
 
           //job cards -for you
           const Padding(
             padding: EdgeInsets.only(left: 24),
             child: Text(
               'For you',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
             ),
           ),
 
           const SizedBox(height: 25),
 
-          //recently add -job tiles
+          //job cards
           Padding(
             padding: const EdgeInsets.only(right: 16),
             child: SizedBox(
