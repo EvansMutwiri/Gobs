@@ -9,6 +9,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List jobsForYou = [
+    ['Uber', 'UI/UX Designer', 'lib/icons/uber.png', 45],
+    ['Google', 'Tech Lead', 'lib/icons/google.png', 80],
+    ['Apple', 'Product Designer', 'lib/icons/apple.png', 66],
+    ['Adidas', 'Software Eng.', 'lib/icons/adidas.png', 50],
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,14 +117,15 @@ class _HomePageState extends State<HomePage> {
             height: 140,
             // color: Colors.red[200],
             child: ListView.builder(
-                itemCount: 3,
+                itemCount: jobsForYou.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return const JobCard(
-                    companyName: 'Adidas',
-                    jobTitle: 'UI/UX Designer',
-                    salary: 1000,
-                    logoImage: 'lib/icons/uber.png',
+                  return JobCard(
+                    // ['Uber', 'UI/UX Designer', 'lib/icons/uber.png', 45]
+                    companyName: jobsForYou[index][0],
+                    jobTitle: jobsForYou[index][1],
+                    salary: jobsForYou[index][3],
+                    logoImage: jobsForYou[index][2],
                   );
                 }),
           )
